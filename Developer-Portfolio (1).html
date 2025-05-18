@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Solutions Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#a3e635',secondary:'#374151'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.7);
+z-index: 1000;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.modal.active {
+display: flex;
+opacity: 1;
+}
+.modal-content {
+background: rgba(31, 41, 55, 0.95);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+padding: 2rem;
+border-radius: 1rem;
+width: 90%;
+max-width: 600px;
+margin: auto;
+position: relative;
+transform: translateY(-20px);
+transition: transform 0.3s ease;
+}
+.modal.active .modal-content {
+transform: translateY(0);
+}
+.modal-close {
+position: absolute;
+top: 1rem;
+right: 1rem;
+width: 2rem;
+height: 2rem;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 9999px;
+background: rgba(255, 255, 255, 0.1);
+color: white;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+.modal-close:hover {
+background: rgba(255, 255, 255, 0.2);
+}
+.glass-effect {
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.glass-card {
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+transition: all 0.3s ease;
+}
+.glass-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.circular-progress {
+position: relative;
+height: 100%;
+width: 100%;
+}
+.circular-progress .dot {
+position: absolute;
+height: 10px;
+width: 10px;
+border-radius: 50%;
+background: #a3e635;
+transform: translate(-50%, -50%);
+}
+.hero-section {
+background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://readdy.ai/api/search-image?query=modern%2520technology%2520background%2520with%2520digital%2520elements%2520and%2520code%2520visualization%2C%2520dark%2520gradient%2520with%2520blue%2520and%2520green%2520accents%2C%2520professional%2520IT%2520solutions%2520concept%2520with%2520abstract%2520digital%2520elements%2C%2520perfect%2520for%2520tech%2520company%2520website&width=1920&height=1080&seq=12345&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+</style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+<!-- Hero Section -->
+<div class="hero-section min-h-screen relative overflow-hidden">
+<!-- Navigation -->
+<nav class="w-full py-4 px-6 flex justify-between items-center absolute top-0 left-0 z-10">
+<div class="flex items-center">
+<img src="https://static.readdy.ai/image/1eafcb0d25ce1e11bbaefe7e8ebee9c8/c5e182879b0d586250768555d9f0997e.png" alt="Logo" class="h-8">
+<span class="text-gray-300 ml-2 text-sm">IT Solutions</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center space-x-6">
+<a href="#" class="text-white hover:text-primary transition-colors">Home</a>
+<a href="#" class="text-white hover:text-primary transition-colors">Services</a>
+<a href="#" class="text-white hover:text-primary transition-colors">Portfolio</a>
+<a href="#" class="text-white hover:text-primary transition-colors">About</a>
+<a href="#" class="text-white hover:text-primary transition-colors">Contact</a>
+</div>
+<button class="w-10 h-10 bg-white rounded-full flex items-center justify-center !rounded-button">
+<i class="ri-menu-line text-gray-800"></i>
+</button>
+</div>
+</nav>
+<!-- Sale Button -->
+<div class="absolute top-24 right-12 z-10">
+<button class="bg-primary text-gray-800 px-4 py-4 rounded-full flex flex-col items-center justify-center font-medium !rounded-button">
+<span>On Sale</span>
+<span>Now</span>
+</button>
+</div>
+<!-- Hero Content -->
+<div class="container mx-auto px-6 h-screen flex items-center">
+<div class="w-full flex flex-col md:flex-row items-center justify-between">
+<!-- Left Content -->
+<div class="md:w-1/2 text-white z-10">
+<h1 class="text-5xl md:text-6xl font-bold mb-6">Innovation & Solutions for Digital Future</h1>
+<p class="text-xl mb-8 text-gray-200">Transforming businesses with cutting-edge technology and expert IT services</p>
+<button class="bg-transparent border border-white text-white px-6 py-3 rounded-full flex items-center space-x-2 hover:bg-white hover:text-gray-800 transition-all !rounded-button whitespace-nowrap">
+<span class="w-8 h-8 flex items-center justify-center rounded-full bg-primary text-gray-800">
+<i class="ri-arrow-right-line"></i>
+</span>
+<span>Browse our services</span>
+</button>
+</div>
+<!-- Right Content - Interactive Diagram -->
+<div class="md:w-1/2 relative mt-12 md:mt-0 z-10">
+<div class="circular-progress w-[400px] h-[400px] relative">
+<!-- Center Circle -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full overflow-hidden border-2 border-primary">
+<img src="https://readdy.ai/api/search-image?query=professional%2520IT%2520specialist%2520working%2520on%2520computer%2520code%2C%2520focused%2520on%2520screen%2520with%2520programming%2520interface%2C%2520modern%2520office%2520environment%2C%2520dark%2520lighting%2520with%2520blue%2520highlights&width=400&height=400&seq=54321&orientation=squarish"
+class="w-full h-full object-cover" alt="IT Professional">
+<div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-80">
+<i class="ri-play-fill text-2xl text-white"></i>
+</button>
+</div>
+</div>
+<!-- Service Points -->
+<div class="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+<div class="glass-effect rounded-xl px-6 py-4 text-center">
+<h3 class="text-2xl font-bold text-white">0.1</h3>
+<p class="text-gray-200">Web Development</p>
+</div>
+</div>
+<div class="absolute top-1/2 left-3/4 transform -translate-x-1/2 -translate-y-1/2">
+<div class="glass-effect rounded-xl px-6 py-4 text-center">
+<h3 class="text-2xl font-bold text-white">0.2</h3>
+<p class="text-gray-200">System Integration</p>
+</div>
+</div>
+<div class="absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+<div class="glass-effect rounded-xl px-6 py-4 text-center">
+<h3 class="text-2xl font-bold text-white">0.3</h3>
+<p class="text-gray-200">Cloud Solutions</p>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute top-1/3 right-1/4 w-12 h-12 rounded-full bg-white bg-opacity-10 flex items-center justify-center">
+<i class="ri-code-s-slash-line text-primary text-xl"></i>
+</div>
+<div class="absolute bottom-1/4 right-1/3 w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center">
+<i class="ri-database-2-line text-primary text-lg"></i>
+</div>
+<div class="absolute top-2/3 left-1/4 w-8 h-8 rounded-full bg-white bg-opacity-10 flex items-center justify-center">
+<i class="ri-cloud-line text-primary text-base"></i>
+</div>
+<!-- Connection Lines (SVG) -->
+<svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
+<path d="M200,200 L200,100" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="5,5" />
+<path d="M200,200 L300,200" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="5,5" />
+<path d="M200,200 L200,300" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="5,5" />
+<path d="M200,200 L150,150" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="5,5" />
+<path d="M200,200 L250,250" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-dasharray="5,5" />
+</svg>
+<!-- Service Card 4 -->
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Arrows -->
+<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-10">
+<button class="w-10 h-10 mb-4 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+<i class="ri-arrow-up-s-line text-white"></i>
+</button>
+<button class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+<i class="ri-arrow-down-s-line text-white"></i>
+</button>
+</div>
+<!-- Side Navigation -->
+<div class="absolute top-1/2 left-6 transform -translate-y-1/2 flex flex-col items-center space-y-4 z-10">
+<button class="w-8 h-8 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+<i class="ri-arrow-left-s-line text-white"></i>
+</button>
+<button class="w-8 h-8 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+<i class="ri-arrow-right-s-line text-white"></i>
+</button>
+</div>
+</div>
+<!-- Services Section -->
+<div class="py-16 px-6 bg-gradient-to-b from-gray-900 to-gray-800">
+<div class="container mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Service Card 1 -->
+<div class="glass-card rounded-2xl overflow-hidden">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-gray-700 text-white px-2 py-1 rounded-full text-xs">Popular</span>
+<button class="w-6 h-6 flex items-center justify-center text-white hover:text-primary">
+<i class="ri-heart-line text-lg"></i>
+</button>
+</div>
+<div class="flex justify-center mb-4">
+<div class="w-28 h-28 rounded-full bg-gray-200 bg-opacity-20 flex items-center justify-center overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=web%2520development%2520concept%2C%2520responsive%2520website%2520design%2520on%2520multiple%2520devices%2C%2520code%2520editor%2520with%2520HTML%2520and%2520CSS%2C%2520professional%2520web%2520design%2520tools%2C%2520amber%2520glass%2520bottle%2520aesthetic&width=400&height=400&seq=11111&orientation=squarish"
+class="w-full h-full object-cover object-top" alt="Web Development">
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Web Development</h3>
+<p class="text-gray-300 mb-4">Custom responsive websites with modern frameworks and optimized performance</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-bold text-white">$1,299.99</span>
+<button class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+<!-- Service Card 4 -->
+</div>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="glass-card rounded-2xl overflow-hidden">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-gray-700 text-white px-2 py-1 rounded-full text-xs">Popular</span>
+<button class="w-6 h-6 flex items-center justify-center text-white hover:text-primary">
+<i class="ri-heart-line text-lg"></i>
+</button>
+</div>
+<div class="flex justify-center mb-4">
+<div class="w-28 h-28 rounded-full bg-gray-200 bg-opacity-20 flex items-center justify-center overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=system%2520integration%2520concept%2C%2520connected%2520enterprise%2520applications%2C%2520data%2520flow%2520visualization%2C%2520API%2520integration%2520diagram%2C%2520professional%2520IT%2520infrastructure%2C%2520amber%2520glass%2520bottle%2520aesthetic&width=400&height=400&seq=22222&orientation=squarish"
+class="w-full h-full object-cover object-top" alt="System Integration">
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">System Integration</h3>
+<p class="text-gray-300 mb-4">Seamless integration of business systems, APIs, and data migration services</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-bold text-white">$2,499.99</span>
+<button class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+<!-- Service Card 4 -->
+</div>
+</div>
+</div>
+<!-- Service Card 3 -->
+<div class="glass-card rounded-2xl overflow-hidden">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-gray-700 text-white px-2 py-1 rounded-full text-xs">Popular</span>
+<button class="w-6 h-6 flex items-center justify-center text-white hover:text-primary">
+<i class="ri-heart-line text-lg"></i>
+</button>
+</div>
+<div class="flex justify-center mb-4">
+<div class="w-28 h-28 rounded-full bg-gray-200 bg-opacity-20 flex items-center justify-center overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=cloud%2520computing%2520solutions%2C%2520server%2520infrastructure%2C%2520data%2520center%2520visualization%2C%2520cloud%2520storage%2520concept%2C%2520secure%2520network%2520architecture%2C%2520amber%2520glass%2520bottle%2520aesthetic&width=400&height=400&seq=33333&orientation=squarish"
+class="w-full h-full object-cover object-top" alt="Cloud Solutions">
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Cloud Solutions</h3>
+<p class="text-gray-300 mb-4">Scalable cloud infrastructure, migration services, and managed hosting</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-bold text-white">$3,799.99</span>
+<button class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Service Card 4 -->
+<div class="glass-card rounded-2xl overflow-hidden">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-gray-700 text-white px-2 py-1 rounded-full text-xs">Popular</span>
+<button class="w-6 h-6 flex items-center justify-center text-white hover:text-primary">
+<i class="ri-heart-line text-lg"></i>
+</button>
+</div>
+<div class="flex justify-center mb-4">
+<div class="w-28 h-28 rounded-full bg-gray-200 bg-opacity-20 flex items-center justify-center overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=mobile%2520app%2520development%2520concept%2C%2520smartphone%2520with%2520modern%2520UI%2520design%2C%2520app%2520interface%2520elements%2C%2520professional%2520mobile%2520application%2520development%2C%2520amber%2520glass%2520bottle%2520aesthetic&width=400&height=400&seq=44444&orientation=squarish"
+class="w-full h-full object-cover object-top" alt="Mobile App Development">
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">Mobile App Development</h3>
+<p class="text-gray-300 mb-4">Custom mobile applications for iOS and Android with modern UI/UX design</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-bold text-white">$4,299.99</span>
+<button class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors !rounded-button">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- About Section -->
+<div class="py-16 px-6 bg-gray-800">
+<div class="container mx-auto">
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/2">
+<h2 class="text-3xl font-bold text-white mb-6">About Our IT Solutions</h2>
+<p class="text-gray-300 mb-4">With over 10 years of experience in the IT industry, we provide comprehensive technology solutions tailored to meet the unique needs of businesses across various sectors.</p>
+<p class="text-gray-300 mb-6">Our team of certified professionals is dedicated to delivering innovative solutions that drive efficiency, productivity, and growth for our clients.</p>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+<i class="ri-check-line text-gray-800"></i>
+</div>
+<span class="text-white">Expert Consultation</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+<i class="ri-check-line text-gray-800"></i>
+</div>
+<span class="text-white">24/7 Support</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+<i class="ri-check-line text-gray-800"></i>
+</div>
+<span class="text-white">Custom Solutions</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+<i class="ri-check-line text-gray-800"></i>
+</div>
+<span class="text-white">Secure Infrastructure</span>
+</div>
+</div>
+<button class="bg-primary text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors !rounded-button whitespace-nowrap">
+Learn More About Us
+</button>
+</div>
+<div class="md:w-1/2">
+<div class="relative">
+<div class="w-full h-80 rounded-2xl overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=modern%2520IT%2520team%2520working%2520in%2520collaborative%2520office%2520environment%2C%2520professional%2520developers%2520discussing%2520project%2520on%2520large%2520screens%2C%2520tech%2520company%2520workspace%2520with%2520multiple%2520monitors%2520showing%2520code&width=800&height=600&seq=44444&orientation=landscape"
+class="w-full h-full object-cover object-top" alt="IT Team">
+</div>
+<div class="absolute -bottom-6 -right-6 bg-primary p-4 rounded-xl">
+<div class="flex items-center space-x-4">
+<div class="text-center">
+<h3 class="text-3xl font-bold text-gray-800">150+</h3>
+<p class="text-gray-700 text-sm">Projects</p>
+</div>
+<div class="h-12 w-px bg-gray-700"></div>
+<div class="text-center">
+<h3 class="text-3xl font-bold text-gray-800">98%</h3>
+<p class="text-gray-700 text-sm">Satisfaction</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonials Section -->
+<div class="py-16 px-6 bg-gray-900">
+<div class="container mx-auto">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-white mb-4">What Our Clients Say</h2>
+<p class="text-gray-300 max-w-2xl mx-auto">Hear from businesses that have transformed their operations with our IT solutions</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Testimonial 1 -->
+<div class="glass-card rounded-2xl p-6">
+<div class="flex items-center mb-4">
+<div class="text-primary">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-300 mb-6">"The web development team delivered beyond our expectations. Our new site has increased conversions by 45% and provides an exceptional user experience."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+<img src="https://static.readdy.ai/image/1eafcb0d25ce1e11bbaefe7e8ebee9c8/4b5d7cd2245ceb663832149fad70c95c.jpeg"
+class="w-full h-full object-cover object-top" alt="CEO">
+</div>
+<div>
+<h4 class="text-white font-medium">Masaer DIANE</h4>
+<p class="text-gray-400 text-sm">CEO & Founder, XAMLU COMPANY</p>
+<p class="text-gray-400 text-xs">Software Engineer, Touba, Senegal</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="glass-card rounded-2xl p-6">
+<div class="flex items-center mb-4">
+<div class="text-primary">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-300 mb-6">"The system integration services provided by this team streamlined our operations and eliminated data silos. Our productivity has increased by 60%."</p>
+<div class="flex items-center">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520woman%2520portrait%2C%2520corporate%2520headshot%2C%2520neutral%2520background%2C%2520business%2520attire&width=100&height=100&seq=66666&orientation=squarish"
+class="w-full h-full object-cover object-top" alt="Client">
+</div>
+<div>
+<h4 class="text-white font-medium">Samantha Williams</h4>
+<p class="text-gray-400 text-sm">CTO, Global Enterprises</p>
+<!-- Service Card 4 -->
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="glass-card rounded-2xl p-6">
+<div class="flex items-center mb-4">
+<div class="text-primary">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+</div>
+<p class="text-gray-300 mb-6">"Moving our infrastructure to the cloud with their guidance has reduced our IT costs by 30% while improving security and scalability. Excellent service!"</p>
+<div class="flex items-center">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%2520business%2520person%2520portrait%2C%2520corporate%2520headshot%2C%2520neutral%2520background%2C%2520business%2520attire&width=100&height=100&seq=77777&orientation=squarish"
+class="w-full h-full object-cover object-top" alt="Client">
+</div>
+<div>
+<h4 class="text-white font-medium">David Thompson</h4>
+<p class="text-gray-400 text-sm">IT Director, Vertex Solutions</p>
+<!-- Service Card 4 -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Contact Section -->
+<div class="py-16 px-6 bg-gradient-to-b from-gray-800 to-gray-900">
+<div class="container mx-auto">
+<div class="flex flex-col md:flex-row gap-12">
+<div class="md:w-1/2">
+<h2 class="text-3xl font-bold text-white mb-6">Get in Touch</h2>
+<p class="text-gray-300 mb-8">Ready to transform your business with our IT solutions? Contact us today for a free consultation.</p>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label for="name" class="block text-white mb-2">Full Name</label>
+<input type="text" id="name" class="w-full bg-gray-700 border-none rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary outline-none" placeholder="Your name">
+</div>
+<div>
+<label for="email" class="block text-white mb-2">Email Address</label>
+<input type="email" id="email" class="w-full bg-gray-700 border-none rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary outline-none" placeholder="Your email">
+</div>
+</div>
+<div>
+<label for="subject" class="block text-white mb-2">Subject</label>
+<input type="text" id="subject" class="w-full bg-gray-700 border-none rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary outline-none" placeholder="How can we help?">
+</div>
+<div>
+<label for="message" class="block text-white mb-2">Message</label>
+<textarea id="message" rows="4" class="w-full bg-gray-700 border-none rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-primary outline-none resize-none" placeholder="Tell us about your project..."></textarea>
+</div>
+<button type="submit" class="bg-primary text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors !rounded-button whitespace-nowrap">
+Send Message
+</button>
+</form>
+</div>
+<div class="md:w-1/2">
+<div class="h-full glass-card rounded-2xl p-6 flex flex-col">
+<h3 class="text-2xl font-bold text-white mb-6">Contact Information</h3>
+<div class="space-y-8 mb-8">
+<div class="border-b border-gray-700 pb-6">
+<h4 class="text-white font-medium mb-4">Dakar Office</h4>
+<div class="space-y-4">
+<div class="flex items-start space-x-4">
+<div class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center flex-shrink-0">
+<i class="ri-map-pin-line text-primary"></i>
+</div>
+<div>
+<h4 class="text-white font-medium mb-1">Address</h4>
+<p class="text-gray-300">Dakar Maristes, Senegal</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center flex-shrink-0">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<div>
+<h4 class="text-white font-medium mb-1">Phone</h4>
+<p class="text-gray-300">+221 78 120 5397</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center flex-shrink-0">
+<i class="ri-mail-line text-primary"></i>
+</div>
+<div>
+<h4 class="text-white font-medium mb-1">Email</h4>
+<p class="text-gray-300">xamlu@yahoo.com</p>
+<!-- Service Card 4 -->
+</div>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-white font-medium mb-4">Praia Office</h4>
+<div class="space-y-4">
+<div class="flex items-start space-x-4">
+<div class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center flex-shrink-0">
+<i class="ri-map-pin-line text-primary"></i>
+</div>
+<div>
+<h4 class="text-white font-medium mb-1">Address</h4>
+<p class="text-gray-300">Palmarejo Grande, Mira Flores School, Praia, Cape Verde</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center flex-shrink-0">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<div>
+<h4 class="text-white font-medium mb-1">Phone</h4>
+<p class="text-gray-300">+238 524 4624</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center flex-shrink-0">
+<i class="ri-mail-line text-primary"></i>
+</div>
+<div>
+<h4 class="text-white font-medium mb-1">Email</h4>
+<p class="text-gray-300">xamlu.co@gmail.com</p>
+<!-- Service Card 4 -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto">
+<h4 class="text-white font-medium mb-4">Connect With Us</h4>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-gray-800 transition-colors">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-gray-800 transition-colors">
+<i class="ri-twitter-x-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-gray-800 transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-gray-800 transition-colors">
+<i class="ri-instagram-fill"></i>
+</a>
+<!-- Service Card 4 -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="py-12 px-6 bg-gray-900 border-t border-gray-800">
+<div class="container mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<div class="flex items-center mb-4">
+<img src="https://static.readdy.ai/image/1eafcb0d25ce1e11bbaefe7e8ebee9c8/564cd1b448089bb1f9945ac907756fdf.png" alt="Logo" class="h-8">
+<span class="text-gray-300 ml-2">IT Solutions</span>
+</div>
+<p class="text-gray-400 mb-6">Empowering businesses through innovative technology solutions since 2015.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-primary">
+<i class="ri-linkedin-fill text-xl"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<i class="ri-twitter-x-fill text-xl"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<i class="ri-facebook-fill text-xl"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-primary">
+<i class="ri-instagram-fill text-xl"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-white font-bold mb-4">Services</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-primary">Web Development</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">System Integration</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Cloud Solutions</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">IT Consulting</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Cybersecurity</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-bold mb-4">Company</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-primary">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Our Team</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Careers</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Blog</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-bold mb-4">Newsletter</h3>
+<p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+<form class="flex">
+<input type="email" class="flex-1 bg-gray-800 border-none rounded-l-lg px-4 py-2 text-white focus:ring-2 focus:ring-primary outline-none" placeholder="Your email">
+<button type="submit" class="bg-primary text-gray-800 rounded-r-lg px-4 py-2 font-medium !rounded-button whitespace-nowrap">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Xamlu. All rights reserved.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-primary text-sm">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-primary text-sm">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-primary text-sm">Cookie Policy</a>
+<!-- Service Card 4 -->
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Mobile menu toggle
+const menuButton = document.querySelector('nav button');
+const mobileMenu = document.querySelector('nav .hidden');
+if (menuButton && mobileMenu) {
+menuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+mobileMenu.classList.toggle('flex');
+});
+}
+// Create modal container
+const modalContainer = document.createElement('div');
+modalContainer.className = 'modal';
+modalContainer.innerHTML = `
+<div class="modal-content">
+<button class="modal-close"><i class="ri-close-line"></i></button>
+<div class="modal-body"></div>
+</div>
+`;
+document.body.appendChild(modalContainer);
+// Modal functions
+function showModal(content) {
+const modalBody = modalContainer.querySelector('.modal-body');
+modalBody.innerHTML = content;
+modalContainer.classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+function hideModal() {
+modalContainer.classList.remove('active');
+document.body.style.overflow = '';
+}
+// Close modal on click outside or close button
+modalContainer.addEventListener('click', (e) => {
+if (e.target === modalContainer) hideModal();
+});
+modalContainer.querySelector('.modal-close').addEventListener('click', hideModal);
+// Service buttons
+document.querySelectorAll('.glass-card button').forEach(button => {
+button.addEventListener('click', function() {
+const card = this.closest('.glass-card');
+const title = card.querySelector('h3').textContent;
+const description = card.querySelector('p').textContent;
+const price = card.querySelector('.text-2xl').textContent;
+showModal(`
+<h2 class="text-2xl font-bold text-white mb-4">${title}</h2>
+<p class="text-gray-300 mb-6">${description}</p>
+<div class="mb-6">
+<h3 class="text-white font-medium mb-2">Key Features:</h3>
+<ul class="text-gray-300 space-y-2">
+<li>• Custom Development</li>
+<li>• 24/7 Support</li>
+<li>• Regular Updates</li>
+<li>• Performance Optimization</li>
+</ul>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-bold text-white">${price}</span>
+<button class="bg-primary text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors !rounded-button whitespace-nowrap">
+Get Started
+</button>
+</div>
+`);
+});
+});
+// Navigation links
+document.querySelectorAll('nav a, footer a').forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const content = `
+<h2 class="text-2xl font-bold text-white mb-4">${this.textContent}</h2>
+<p class="text-gray-300 mb-6">This section is coming soon! We're working hard to bring you amazing content about ${this.textContent.toLowerCase()}.</p>
+<button class="bg-primary text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors !rounded-button whitespace-nowrap">
+Stay Tuned
+</button>
+`;
+showModal(content);
+});
+});
+// Social media links
+document.querySelectorAll('.social-link').forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+showModal(`
+<h2 class="text-2xl font-bold text-white mb-4">Connect With Us</h2>
+<p class="text-gray-300 mb-6">Follow us on social media to stay updated with our latest news and updates!</p>
+<div class="flex justify-center space-x-4">
+<a href="#" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-gray-800 transition-colors">
+<i class="ri-linkedin-fill text-xl"></i>
+</a>
+<a href="#" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-gray-800 transition-colors">
+<i class="ri-twitter-x-fill text-xl"></i>
+</a>
+<a href="#" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-gray-800 transition-colors">
+<i class="ri-facebook-fill text-xl"></i>
+</a>
+<a href="#" class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-primary hover:text-gray-800 transition-colors">
+<i class="ri-instagram-fill text-xl"></i>
+</a>
+</div>
+`);
+});
+});
+// Contact form submission
+const contactForm = document.querySelector('form');
+if (contactForm) {
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+showModal(`
+<div class="text-center">
+<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-check-line text-3xl text-gray-800"></i>
+</div>
+<h2 class="text-2xl font-bold text-white mb-4">Message Sent Successfully!</h2>
+<p class="text-gray-300 mb-6">Thank you for contacting us. We'll get back to you within 24 hours.</p>
+<button onclick="hideModal()" class="bg-primary text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors !rounded-button whitespace-nowrap">
+Close
+</button>
+</div>
+`);
+this.reset();
+});
+}
+// Newsletter subscription
+const newsletterForm = document.querySelector('footer form');
+if (newsletterForm) {
+newsletterForm.addEventListener('submit', function(e) {
+e.preventDefault();
+showModal(`
+<div class="text-center">
+<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="ri-mail-check-line text-3xl text-gray-800"></i>
+</div>
+<h2 class="text-2xl font-bold text-white mb-4">Successfully Subscribed!</h2>
+<p class="text-gray-300 mb-6">Thank you for subscribing to our newsletter. You'll receive our latest updates soon!</p>
+<button onclick="hideModal()" class="bg-primary text-gray-800 px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors !rounded-button whitespace-nowrap">
+Close
+</button>
+</div>
+`);
+this.reset();
+});
+}
+});
+</script>
+</body>
+</html>
